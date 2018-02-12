@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<!-- Data Sources -->
+	<data-sources></data-sources>
+
+	<!-- Form Beans -->
+	<form-beans>
+		<form-bean name="Login" type="com.depthfirst.framework.ums.struts.LoginForm" />
+		<form-bean name="Notification" type="com.depthfirst.framework.struts.BaseForm" />
+	</form-beans>
+
+
+	<!-- Global Exceptions -->
+	<global-exceptions></global-exceptions>
+
+
+	<!-- Global Forwards -->
+	<global-forwards>
+		<forward name="login" path="/index.jsp" />
+		<forward name="close" path="/close.jsp" />
+		<forward name="home" path="/home.jsp" redirect="true" />
+		
+	</global-forwards>
+
+	<!-- Action Mappings -->
+	<action-mappings>
+		<action type="com.depthfirst.framework.ums.struts.CookiesLoginAction"
+				path="/login" name="Login" scope="request" validate="false" parameter="cmd">
+			<forward name="password" path="/password.jsp" />
+			<forward name="node" path="/node.jsp" />
+			<forward name="passwordExpired" path="/passwordExpired.jsp" />
+		</action>
+
+		<action type="com.depthfirst.framework.struts.PublicDomainAction"
+				className="com.depthfirst.framework.struts.BaseDomainActionMapping"
+				path="/notification" name="Notification" scope="session" validate="false" parameter="cmd">
+			<set-property property="serviceName" value="BaseDomainService" />
+			<set-property property="baseDomainClassName" value="com.depthfirst.framework.domain.Notification" />
+			<set-property property="searchConditionClassName" value="com.depthfirst.framework.domain.UserNotificationCondition" />
+			<forward name="list" path="/notification.jsp" />
+		</action>
+	</action-mappings>
+
+	<!-- Message Resources -->
+	<message-resources parameter="com.depthfirst.framework.struts.MessageResources"/>
+
+</struts-config>

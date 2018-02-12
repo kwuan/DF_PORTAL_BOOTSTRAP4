@@ -1,0 +1,89 @@
+#nav-menu .slashc-two-tier-menu 
+{ 
+	font: 13px/1.3em Arial, Tahoma, Verdana;
+	text-shadow: 1px 1px #fff;
+}
+
+#nav-menu .slashc-two-tier-menu a,
+#nav-menu .slashc-two-tier-menu a:hover,
+#nav-menu .slashc-two-tier-menu a:active
+{ 
+	text-decoration: none;
+	outline: none;
+	color: #000;
+}
+
+#nav-menu .slashc-two-tier-menu{
+	background:url(../images/bg_leftcolumn.png) repeat-y;
+}
+#nav-menu .slashc-two-tier-menu ul,
+#nav-menu .slashc-two-tier-menu li
+{ 
+	margin: 0;
+	padding: 0;
+	list-style: none;	
+}
+
+#nav-menu .slashc-two-tier-menu > ul > li > a
+{
+	height: 30px;
+	line-height: 30px;
+	background: #fff url(../images/itm_up.png) repeat-x 0 0;
+	text-indent: 16px;
+}
+
+#nav-menu .slashc-two-tier-menu li > ul > li a span{
+	margin-left:5px;
+	color:#000;
+	display: inline!important;
+}
+#nav-menu .slashc-two-tier-menu > ul > li > a:hover
+{
+	background: #eee url(../images/itm_ovr.png) repeat-x 0 0;
+	color: #000000;
+}
+#nav-menu .slashc-two-tier-menu > ul > li.selected > a,
+#nav-menu .slashc-two-tier-menu > ul > li.selected > a:hover
+{
+	background: #18a url(../images/itm_sel.png) repeat-x 0 0;
+	color: #fff;
+	text-shadow: 1px 1px #000;
+}
+#nav-menu .slashc-two-tier-menu > ul > li > a > span
+{
+	background: url(../images/icn_plus.png) no-repeat 235px 50%;
+	height: 31px;
+}
+#nav-menu .slashc-two-tier-menu > ul > li.selected > a > span
+{
+	background: url(../images/icn_minus.png) no-repeat 235px 50%;
+}
+
+#nav-menu .slashc-two-tier-menu li > ul > li > a
+{
+	height: 31px;
+	line-height: 31px;
+	font-size: 12px;
+	background: #fff url(../images/subitm_up.png) repeat-x 0 0;
+	text-indent: 16px;
+}
+#nav-menu .slashc-two-tier-menu li > ul > li > a:hover
+{
+	background: #eee url(../images/subitm_ovr.png) repeat-x 0 0;
+	color: #FFF;
+	text-shadow: none;
+}
+
+/*#nav-menu .slashc-two-tier-menu,
+#nav-menu .slashc-two-tier-menu ul,*/
+#nav-menu .slashc-two-tier-menu li,
+#nav-menu .slashc-two-tier-menu a,
+#nav-menu .slashc-two-tier-menu span
+{
+	display: block;
+	width: 260px;
+	overflow: hidden;
+	padding-left:1px;
+}
+
+

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<!-- Data Sources -->
+	<data-sources></data-sources>
+
+	<!-- Form Beans -->
+	<form-beans>
+		<form-bean name="UMS001" type="com.depthfirst.framework.struts.BaseForm" />
+		<form-bean name="UMS002" type="com.depthfirst.framework.struts.BaseForm" />
+		<form-bean name="UMS003" type="com.depthfirst.framework.ums.struts.PageForm" />
+		<form-bean name="UMS004" type="com.depthfirst.framework.ums.struts.RoleForm" />
+		<form-bean name="UMS005" type="com.depthfirst.framework.ums.struts.UserForm" />
+		<form-bean name="UMS006" type="com.depthfirst.framework.ums.struts.UserUsageLogForm" />
+		<form-bean name="UMS007" type="com.depthfirst.framework.ums.struts.UserForm" />
+	</form-beans>
+
+
+	<!-- Global Exceptions -->
+	<global-exceptions></global-exceptions>
+
+
+	<!-- Global Forwards -->
+	<global-forwards>
+	</global-forwards>
+
+	<!-- Action Mappings -->
+	<action-mappings>
+		<action type="com.depthfirst.framework.struts.BaseDomainAction"
+				className="com.depthfirst.framework.struts.BaseDomainActionMapping"
+				path="/ums/module" name="UMS001" scope="session" validate="false" parameter="cmd">
+			<set-property property="serviceName" value="BaseDomainService" />
+			<set-property property="baseDomainClassName" value="com.depthfirst.framework.ums.domain.UmsModule" />
+			<set-property property="defaultOrderBy" value="o.order,o.code" />
+			<forward name="form" path="/ums/moduleForm.jsp" />
+			<forward name="list" path="/ums/moduleList.jsp" />
+		</action>
+		<action type="com.depthfirst.framework.struts.BaseDomainAction"
+				className="com.depthfirst.framework.struts.BaseDomainActionMapping"
+				path="/ums/pageType" name="UMS002" scope="session" validate="false" parameter="cmd">
+			<set-property property="serviceName" value="BaseDomainService" />
+			<set-property property="baseDomainClassName" value="com.depthfirst.framework.ums.domain.UmsPageType" />
+			<set-property property="defaultOrderBy" value="o.order" />
+			<forward name="form" path="/ums/pageTypeForm.jsp" />
+			<forward name="list" path="/ums/pageTypeList.jsp" />
+		</action>
+		<action type="com.depthfirst.framework.ums.struts.PageAction"
+				className="com.depthfirst.framework.struts.BaseDomainActionMapping"
+				path="/ums/page" name="UMS003" scope="session" validate="false" parameter="cmd">
+			<set-property property="serviceName" value="BaseDomainService" />
+			<set-property property="baseDomainClassName" value="com.depthfirst.framework.ums.domain.UmsPage" />
+			<set-property property="searchConditionClassName" value="com.depthfirst.framework.ums.domain.UmsPageCondition" />
+			<set-property property="searchResultExporterClassName" value="com.depthfirst.framework.ums.domain.UmsPageCondition" />
+			<set-property property="defaultOrderBy" value="o.module.order,o.pageType.order,o.order,o.code" />
+			<forward name="form" path="/ums/pageForm.jsp" />
+			<forward name="list" path="/ums/pageList.jsp" />
+		</action>
+		<action type="com.depthfirst.framework.ums.struts.RoleAction"
+				className="com.depthfirst.framework.struts.BaseDomainActionMapping"
+				path="/ums/role" name="UMS004" scope="session" validate="false" parameter="cmd">
+			<set-property property="serviceName" value="BaseDomainService" />
+			<set-property property="baseDomainClassName" value="com.depthfirst.framework.ums.domain.UmsRole" />
+			<set-property property="searchConditionClassName" value="com.depthfirst.framework.ums.domain.UmsRoleCondition" />
+			<forward name="form" path="/ums/roleForm.jsp" />
+			<forward name="list" path="/ums/roleList.jsp" />
+			<forward name="modulePage" path="/ums/roleModulePage.jsp" />
+		</action>
+		<action type="com.depthfirst.framework.ums.struts.UserAction"
+				className="com.depthfirst.framework.struts.BaseDomainActionMapping"
+				path="/ums/user" name="UMS005" scope="session" validate="false" parameter="cmd">
+			<set-property property="serviceName" value="UserManagementService" />
+			<set-property property="baseDomainClassName" value="com.depthfirst.framework.ums.domain.UmsUser" />
+			<set-property property="searchConditionClassName" value="com.depthfirst.framework.ums.domain.UmsUserCondition" />
+			<forward name="form" path="/ums/userForm.jsp" />
+			<forward name="list" path="/ums/userList.jsp" />
+			<forward name="password" path="/ums/userPassword.jsp" />
+			<forward name="session" path="/ums/userSession.jsp" />
+		</action>
+		<action type="com.depthfirst.framework.ums.struts.UserUsageLogAction"
+				className="com.depthfirst.framework.struts.BaseDomainActionMapping"
+				path="/ums/userUsageLog" name="UMS006" scope="session" validate="false" parameter="cmd">
+			<set-property property="serviceName" value="UserManagementService" />
+			<set-property property="baseDomainClassName" value="com.depthfirst.framework.ums.domain.UserUsageLog" />
+			<set-property property="searchConditionClassName" value="com.depthfirst.framework.ums.domain.UserUsageLogCondition" />
+			<forward name="list" path="/ums/userUsageLogList.jsp" />
+		</action>
+		<action type="com.depthfirst.framework.ums.struts.UserSessionAction"
+				className="com.depthfirst.framework.struts.BaseDomainActionMapping"
+				path="/ums/userSession" name="UMS007" scope="session" validate="false" parameter="cmd">
+			<set-property property="serviceName" value="UserManagementService" />
+			<set-property property="searchConditionClassName" value="com.depthfirst.framework.ums.domain.UmsUserCondition" />
+			<forward name="session" path="/ums/userSession.jsp" />
+		</action>
+	</action-mappings>
+
+	<!-- Message Resources -->
+</struts-config>

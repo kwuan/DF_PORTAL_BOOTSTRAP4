@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<import resource="responseMessage.xml"/>
+
+	<!-- ===================================== Session Factory =================================================== -->
+	<bean id="hibernateProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="location"><value>/WEB-INF/hibernate.properties</value></property>
+	</bean>
+	<bean id="hbmList" class="java.util.ArrayList">
+		<constructor-arg index="0">
+	      <list>
+	        <value>ums.hbm.xml</value>
+	      </list>
+		</constructor-arg>
+	</bean>
+	<!-- <bean id="sqlWrapper" class="com.depthfirst.framework.report.HbmSchemaSqlWrapper" init-method="init">
+		<property name="hbmList"><ref bean="hbmList"/></property>
+	</bean> -->
+	<bean id="hibernateSessionFactory"  class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+	    <property name="mappingResources"><ref bean="hbmList"/></property>
+	    <property name="hibernateProperties"><ref bean="hibernateProperties"/></property>
+	</bean>
+	
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory"><ref bean="hibernateSessionFactory"/></property>
+	    <property name="cacheQueries"><value>false</value></property>
+	</bean>
+
+
+	<bean id="hibernateDaoSupport" class="org.springframework.orm.hibernate3.support.HibernateDaoSupport" abstract="true">
+	  <property name="sessionFactory">
+	      <ref bean="hibernateSessionFactory"/>
+	  </property>
+	  <property name="hibernateTemplate">
+	      <ref bean="hibernateTemplate"/>
+	  </property>
+	</bean>
+
+	<!--  =============================== Transaction ==================================================== -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+	  <property name="sessionFactory"><ref local="hibernateSessionFactory"/></property>
+	</bean>
+	
+	 <bean id="baseTransaction" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean" abstract="true">
+	   <property name="transactionManager" ref="transactionManager"/>
+	   <property name="transactionAttributes">
+	     <props>
+	      <prop key="save*">PROPAGATION_REQUIRED</prop>
+	      <prop key="update*">PROPAGATION_REQUIRED</prop>
+	      <prop key="delete*">PROPAGATION_REQUIRED</prop>
+	      <prop key="process*">PROPAGATION_REQUIRED</prop>
+	      <prop key="approve*">PROPAGATION_REQUIRED</prop>
+	      <prop key="cancel*">PROPAGATION_REQUIRED</prop>
+	      <prop key="loadOrCreate*">PROPAGATION_REQUIRED</prop>
+	      <prop key="*">PROPAGATION_REQUIRED,readOnly</prop>
+	     </props>
+	   </property>
+	 </bean>
+
+
+	<bean id="rollbackDomainInterceptor" class="com.depthfirst.framework.interceptor.RollbackDomainInterceptor" />
+	<bean id="threadSqlInterceptor" class="com.depthfirst.framework.interceptor.ThreadSqlInterceptor">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+		<property name="sqlList"><list>
+			<value>ALTER SESSION SET NLS_SORT=THAI_DICTIONARY</value>
+		</list></property>
+	</bean>
+	<!--  bean id="processTimeLogInterceptor" class="com.depthfirst.framework.interceptor.ProcessTimeLogInterceptor" / -->
+	
+
+	<bean id="baseServiceWrapper"  class="org.springframework.aop.framework.ProxyFactoryBean" abstract="true">
+	 	<property name="interceptorNames">
+	 		<list>
+	 			<value>rollbackDomainInterceptor</value>
+	 			<value>threadSqlInterceptor</value>
+	 			<!-- <value>indexDocumentInterceptor</value> -->
+	 			<!--value>processTimeLogInterceptor</value-->
+	 		</list>
+	 	</property>
+    </bean>
+
+    <bean id="baseDomainDAO" class="com.depthfirst.framework.dao.BaseDomainDAO" parent="hibernateDaoSupport">
+    	<property name="defaultSearchOrderBy"><value>o.id desc</value></property>
+    </bean>
+ 	
+	<bean id="BaseDomainService" parent="baseServiceWrapper">
+		<property name="proxyInterfaces">
+	         <value>com.depthfirst.framework.service.IBaseDomainService</value>
+	    </property>
+	    <property name="target">
+			<bean parent="baseTransaction">
+			  <property name="target">
+			  	<bean class="com.depthfirst.framework.service.BaseDomainService">
+			  		<property name="baseDomainDAO" ref="baseDomainDAO" />
+			  	</bean>
+			  </property>
+			</bean>
+	    </property>
+	</bean>
+ 	
+	<bean id="UserManagementService" parent="baseServiceWrapper">
+		<property name="proxyInterfaces">
+	         <value>com.depthfirst.framework.ums.service.IUserManagementService</value>
+	    </property>
+	    <property name="target">
+			<bean parent="baseTransaction">
+			  <property name="target">
+			  	<bean class="com.depthfirst.framework.ums.service.UserManagementService">
+			  		<property name="baseDomainDAO" ref="baseDomainDAO" />
+
+			  		<!-- <property name="maxLoginConcurrent"><value>100</value></property>
+			  		<property name="maxLoginFailed"><value>3</value></property>
+			  		<property name="passwordExpiredDays"><value>30</value></property>
+			  		<property name="accountNearlyExpiredDays"><value>10</value></property>
+			  		<property name="userNodeRole"><value>false</value></property>
+			  		<property name="authenModel" ref="ldapAuthen" /> -->
+			  	</bean>
+			  </property>
+			</bean>
+	    </property>
+	</bean>
+
+</beans>

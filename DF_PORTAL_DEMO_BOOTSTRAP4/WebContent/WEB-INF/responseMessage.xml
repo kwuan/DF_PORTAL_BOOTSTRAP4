@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="responseMessageManager" class="com.depthfirst.framework.message.ResponseMessageManager">
+		<property name="exceptionWrapperList">
+			<list>
+				<bean class="com.depthfirst.framework.message.HibernateExceptionWrapper" />
+				<bean class="com.depthfirst.framework.message.OracleHibernateExceptionWrapper" />
+			</list>
+		</property>
+		<property name="messageMap">
+			<map>
+				<!-- success code -->
+				<entry key="00001"><value>บันทึกข้อมูลเรียบร้อย</value></entry>
+				<entry key="00002"><value>ลบข้อมูลเรียบร้อย</value></entry>
+				<entry key="00003"><value>อนุมัติข้อมูลเรียบร้อย</value></entry>
+				<entry key="00004"><value>ยกเลิกข้อมูลเรียบร้อย</value></entry>
+				<entry key="00005"><value>ดำเนินการเรียบร้อย</value></entry>
+				<entry key="00006"><value>ประมวลผลข้อมูลเรียบร้อย</value></entry>
+				<entry key="00007"><value>ผ่านการพิจารณาข้อมูลเรียบร้อย</value></entry>
+				
+				<!-- error code -->
+				<entry key="00500"><value>ระบบผิดพลาดกรุณาติดต่อเจ้าหน้าที่ดูแลระบบ</value></entry>
+				<entry key="00501"><value>ไม่สามารถบันทึกข้อมูลได้เนื่องจากข้อมูลซ้ำซ้อน</value></entry>
+				<entry key="00502"><value>ไม่สามารถบันทึกข้อมูลได้เนื่องจากข้อมูลไม่ครบถ้วน</value></entry>
+				<entry key="00503"><value>ไม่สามารถลบข้อมูลได้เนื่องจากมีข้อมูลอื่นอ้างอิงถึงข้อมูลนี้</value></entry>
+				<entry key="00504"><value>ไม่สามารถบันทึกข้อมูลได้เนื่องจากข้อมูลถูกแก้ไขก่อนหน้า</value></entry>
+				<entry key="00505"><value>ไม่ได้ใช้งานระบบเกินเวลาที่กำหนด กรุณาเข้าสู่ระบบอีกครั้ง</value></entry>
+				<entry key="00506"><value>ผู้ใช้ไม่มีสิทธิใช้งานระบบ</value></entry>
+				<entry key="00507"><value>รหัสผ่านใหม่ซ้ำกับรอบรหัสผ่านเดิม</value></entry>
+				<entry key="00508"><value>ไม่พบข้อมูลที่ใช้ออกรายงาน</value></entry>
+
+				<entry key="00510"><value>ไม่พบรหัสผู้ใช้ในระบบ</value></entry>
+				<entry key="00511"><value>ไม่พบรหัสผู้ใช้ในระบบ Active Directory</value></entry>
+				<entry key="00512"><value>รหัสผ่านไม่ถูกต้อง</value></entry>
+				<entry key="00513"><value>รหัสผู้ใช้ถูกระงับการใช้งาน</value></entry>
+				<entry key="00514"><value>รหัสผู้ใช้เข้าระบบเกินจำนวนที่กำหนด</value></entry>
+				<entry key="00515"><value>รหัสผ่านเดิมไม่ถูกต้อง</value></entry>
+
+				<entry key="00520"><value>รหัสผ่านหมดอายุ</value></entry>
+				<entry key="00521"><value>กรุณาเปลี่ยนรหัสผ่านเพื่อเริ่มต้นการใช้งาน</value></entry>
+				<entry key="00522"><value>รหัสผู้ใช้ใกล้หมดอายุ</value></entry>
+
+				<entry key="00530"><value>เกิดข้อผิดพลาดในการนำเข้าข้อมูล $(0) รายการ</value></entry>
+
+				<entry key="RRS501"><value>อนุมัติการจองห้องประชุมซ้ำซ้อน</value></entry>
+
+				<entry key="LVS501"><value>AnnualLeaveUpdate Error at $(0)</value></entry>
+				<entry key="LVS502"><value>ไม่สามารถอนุมัติลาพักร้อนปีก่อนหน้าได้ กรุณาติดต่อผู้ดูแลระบบ</value></entry>
+				
+				<!-- Mail Response Message -->
+				<entry key="leave.mailSubject"><value>DF_PORTAL: แจ้ง$(0)$(1) ของ$(2) ($(3))</value></entry>
+				<entry key="leaveAnnounce.mailSubject"><value>DF_PORTAL: $(0)แจ้ง$(1) ของ$(2) ($(3))</value></entry>
+				<entry key="leave.mailBody"><value>
+					<![CDATA[
+					<table style="border:1px solid black; border-collapse:collapse">
+					<tr height="25px"><td style="width:200px;"><b>ประเภทการลา</b></td><td style="background-color:#CCE6FF; width:400px;">$(0)</td></tr>
+					<tr height="25px"><td  ><b>รหัสพนักงาน</b></td><td>$(1)</td></tr>
+					<tr height="25px"><td  ><b>ชื่อพนักงาน</b></td><td>$(2)</td></tr>
+					<tr height="25px"><td  ><b>เบอร์ติดต่อ</b></td><td>$(3)</td></tr>
+					<tr height="25px"><td  ><b>วันที่เริ่มต้น</b></td><td style="background-color:#CCE6FF">$(4)</td></tr>
+					<tr height="25px"><td  ><b>วันที่สิ้นสุด</b></td><td style="background-color:#CCE6FF">$(5)</td></tr>
+					<tr height="25px"><td  ><b>ระยะเวลา </b></td><td style="background-color:#CCE6FF">$(6)</td></tr>
+					<tr height="25px"><td  ><b>หมายเหตุ</b></td><td>$(7)</td></tr>
+					<tr height="25px"><td  >&nbsp;</td><td>&nbsp;</td></tr>
+					<tr height="30px"><td  style="border-top:1px solid black;"><b>ผู้อนุมัติ$(8)</b></td><td style="border-top:1px solid black; background-color:#CCE6FF"">$(9)</td></tr>
+					<tr height="30px"><td  ><b>วันที่อนุมัติ$(10)</b></td><td style="background-color:#CCE6FF">$(11)</td></tr>
+					</table>
+				]]>
+				</value></entry>
+				<entry key="meeting.mailSubject"><value>DF_PORTAL: แจ้งเข้าร่วมการประชุม $(0)</value></entry>
+				<entry key="meeting.mailBody"><value>
+					<![CDATA[
+					<table style="border:1px solid black; border-collapse:collapse">
+					<tr height="25px"><td style="width:200px;"><b>วันที่-เวลา</b></td><td style="background-color:#CCE6FF; width:600px;">$(0) - $(1)</td></tr>
+					<tr height="25px"><td  ><b>ห้องประชุม</b></td><td>$(2)</td></tr>
+					<tr height="25px"><td  ><b>โครงการ/บริษัท</b></td><td><pre>$(6)</pre></td></tr>
+					<tr height="25px"><td  ><b>วัตถุประสงค์</b></td><td><pre>$(3)</pre></td></tr>
+					<tr height="25px"><td  >&nbsp;</td><td>&nbsp;</td></tr>
+					<tr height="30px"><td  style="border-top:1px solid black;"><b>ผู้อนุมัติ</b></td><td style="border-top:1px solid black; background-color:#CCE6FF"">$(5)</td></tr>
+					<tr height="30px"><td  ><b>วันที่อนุมัติ</b></td><td style="background-color:#CCE6FF">$(4)</td></tr>
+					</table>
+				]]>
+				</value></entry>
+				<entry key="notification.mailSubject"><value>DF_PORTAL: แจ้งเตือน $(1) รายการยังไม่ดำเนินการ</value></entry>
+			</map>
+		</property>
+	</bean>
+</beans>

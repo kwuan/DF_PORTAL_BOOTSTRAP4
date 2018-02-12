@@ -1,0 +1,191 @@
+.page{
+	FONT-FAMILY: "Tahoma"; COLOR: #FFFFFF; FONT-SIZE: 13px; FONT-WEIGHT: bold; background-image:url(../images/bg_page.gif); height:30px; background-repeat:repeat-x;vertical-align:middle;
+}
+.page_code{
+	FONT-FAMILY: "Tahoma"; COLOR: #ffffff; FONT-SIZE: 13px; FONT-WEIGHT: bold; vertical-align:middle; margin-right:5px;
+}
+
+
+.welcome{
+	FONT-FAMILY: "Tahoma";
+	COLOR: #000000;
+	FONT-SIZE: 13px;
+	vertical-align:middle;
+}
+.login_name{
+	FONT-FAMILY: "Tahoma"; COLOR: #0b2073; FONT-SIZE: 13px; padding-top:2px; font-weight:bold;
+}
+.system_name{
+	FONT-FAMILY: "Tahoma";
+	COLOR: #ffffff;
+	FONT-SIZE: 13px;
+	padding-top:3px;
+	font-weight:bold;
+	vertical-align:middle;
+}
+
+.flow{
+	FONT-FAMILY: "Tahoma"; COLOR: #000000; FONT-SIZE: 13px; padding-left:2px; font-weight:bold;
+}
+.flow_start{
+	FONT-FAMILY: "Tahoma"; COLOR: #000000; FONT-SIZE: 13px; /*padding-top:2px;*/ vertical-align:middle; cursor:hand
+}	
+.flow_current{
+	FONT-FAMILY: "Tahoma";
+	COLOR: #FF0000;
+	FONT-SIZE: 12px;
+	font-weight:bold;
+}	
+
+.footer{
+	clear:both;
+	FONT-FAMILY: "Tahoma"; COLOR: #ffffff; FONT-SIZE: 12px; padding-top:2px;
+}	
+
+
+.trmainmenu td {
+  FONT-FAMILY: Tahoma;
+  font-size: 10pt;
+  font-weight:bold;
+  color: #FFFFFF;
+  cursor:hand
+}
+.trmainmenu a:visited {
+	COLOR: #FFFFFF;
+	TEXT-DECORATION: none
+}
+.trmainmenu a:link {
+	COLOR: #FFFFFF;
+	TEXT-DECORATION: none
+}
+.trmainmenu a:hover {
+	COLOR: #FFFFFF;
+	TEXT-DECORATION: none
+}
+
+.trsubmenu td {
+  FONT-FAMILY: Tahoma;
+  font-size: 10pt;
+  font-weight:bold;
+  color: #4959fb;
+  BACKGROUND-COLOR:#c8c8c8;
+  cursor:hand
+}
+
+.trmenu0 td {
+  FONT-FAMILY: Tahoma;
+  font-size: 10pt;
+  font-weight:bold;
+  color: #4959fb;
+  BACKGROUND-COLOR:#fafafa;
+  cursor:hand
+}
+.trmenu0 a:visited {
+	COLOR: #4959fb;
+	TEXT-DECORATION: none
+}
+.trmenu0 a:link {
+	COLOR: #4959fb;
+	TEXT-DECORATION: none
+}
+.trmenu0 a:hover {
+	COLOR: #F61212;
+	TEXT-DECORATION: none;
+}
+
+.trmenu1 td {
+  FONT-FAMILY: Tahoma;
+  font-size: 10pt;
+  font-weight:bold;
+  color: #F61212;
+  BACKGROUND-COLOR:#f0f4f6;
+  cursor:hand
+}
+.trmenu1 a:visited {
+	COLOR: #F61212;
+	TEXT-DECORATION: none
+}
+.trmenu1 a:link {
+	COLOR: #F61212;
+	TEXT-DECORATION: none
+}
+.trmenu1 a:hover {
+	COLOR: #F61212;
+	TEXT-DECORATION: none;
+}
+
+.trmenuActive td {
+  FONT-FAMILY: Tahoma;
+  font-size: 10pt;
+  font-weight:bold;
+  color: #F66412;
+  BACKGROUND-COLOR:#f0f4f6;
+  cursor:hand
+}
+
+div.tablayout {
+	margin: 0px 0px 0px; 
+	width: 95%;
+}
+ul.tablayout {
+	list-style-type: none; 
+	width: 95%; 
+	float: left;
+}
+ul.tablayout li {
+	margin: 0px 2px 0px 0px; 
+	float: left;
+}
+ul.tablayout a {
+	border-bottom: 0px; 
+	border-left: #ccc 1px solid; 
+	padding-bottom: 4px; 
+	padding-left: 8px; 
+	padding-right: 8px; 
+	display: block; 
+	background: #eee; 
+	float: left; 
+	color: #666; 
+	border-top: #ccc 1px solid; 
+	font-weight: bold; 
+	border-right: #ccc 1px solid; 
+	text-decoration: none; padding-top: 4px;
+}
+ul.tablayout a:hover {
+	background: #fff
+}
+ul.tablayout a.active {
+	padding-bottom: 5px; 
+	background: #fff; 
+	color: #00f; 
+	cursor: default;
+}
+.tabs-container {
+	border-bottom: #ccc 1px solid; 
+	border-left: #ccc 1px solid; 
+	padding-bottom: 0px; 
+	padding-left: 8px; 
+	padding-right: 8px; 
+	clear: left; 
+	border-top: 0px; 
+	border-right: #ccc 1px solid; 
+	padding-top: 0px
+}
+
+.autoNumber {
+	text-align:right
+}
+
+FIELDSET LEGEND {
+	font-family: tahoma;
+	font-size: 10pt;
+	font-weight: bold;
+}
+
+.available {
+  FONT-FAMILY: Tahoma;
+  font-size: 10pt;
+  font-weight: normal;
+  color: #4AA02C;
+}
+

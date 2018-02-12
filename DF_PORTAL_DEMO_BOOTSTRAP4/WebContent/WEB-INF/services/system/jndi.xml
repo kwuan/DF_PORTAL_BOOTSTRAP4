@@ -1,0 +1,35 @@
+<?xml version='1.0'?>
+
+<!--
+  This web service provides support for exposing JNDI resources as web services.
+-->
+
+<service>
+  <constructor>
+    <class>electric.service.ejb.server.JNDIBroker</class>
+	<args>
+        <!--weblogic jndi properties -->
+        <contextFactory>weblogic.jndi.WLInitialContextFactory</contextFactory>
+        <providerURL>t3://localhost:7001</providerURL>
+
+        <!--jboss jndi properties-->
+        <!--<contextFactory>org.jnp.interfaces.NamingContextFactory</contextFactory>-->
+        <!--<providerURL>jnp://localhost:1099</providerURL>-->
+
+        <!-- registry path under which EJB web services are published -->
+        <registryPath>jndi</registryPath>
+    </args>
+  </constructor>
+
+  <!--list of interfaces to publish-->
+  <interface>electric.service.ejb.server.IJNDIBroker</interface>
+
+  <!--publish?-->
+  <publish>no</publish>
+
+  <!--description-->
+  <description>jndi broker</description>
+
+  <!--list of security guards-->
+  <!--<role>administrator</role>-->
+</service>

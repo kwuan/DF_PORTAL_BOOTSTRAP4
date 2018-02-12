@@ -1,0 +1,29 @@
+<?xml version='1.0'?>
+
+<!--
+  This service exposes operations for accessing a running Glue application.
+-->
+
+<service>
+  <!--factory to use for construction-->
+  <factory>
+    <class>electric.application.Applications</class>
+    <method>getCurrentApplication</method>
+  </factory>
+
+  <!--publish?-->
+  <publish>yes</publish>
+
+  <!--list of interfaces to publish-->
+  <interface>electric.application.IApplication</interface>
+
+  <!--list of classes whose closure should be added to WSDL file-->
+  <xmlInclude>electric.util.constructor.Factory</xmlInclude>
+  <xmlInclude>electric.util.constructor.Constructor</xmlInclude>
+
+  <!--description-->
+  <description>application service</description>
+
+  <!--list of security guards-->
+  <!--<role>administrator</role>-->
+</service>

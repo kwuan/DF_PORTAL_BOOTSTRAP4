@@ -1,0 +1,178 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping
+  PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.depthfirst.framework.ums.domain">
+  <class name="UmsModule" table="T_UMS_MODULE" batch-size="10">
+    <id name="id" type="long" unsaved-value="0">
+      <column name="MODULE_ID" not-null="true"/>
+      <generator class="increment"/>
+    </id>
+    <timestamp name="lastUpdDate" column="LAST_UPD_DATE" />
+    <property name="code" unique="true" not-null="true">
+      <column name="MODULE_CODE" length="3" />
+    </property>
+    <property name="name" not-null="true" >
+      <column name="MODULE_NAME" length="50" />
+    </property>
+    <property name="description">
+      <column name="MODULE_DESC" length="200" />
+    </property>
+    <property name="order" column="MODULE_ORDER" />
+  </class>
+  <class name="UmsPageType" table="T_UMS_PAGE_TYPE" batch-size="10">
+    <id name="id" type="long" unsaved-value="0">
+      <column name="PAGE_TYPE_ID" not-null="true"/>
+      <generator class="increment"/>
+    </id>
+    <timestamp name="lastUpdDate" column="LAST_UPD_DATE" />
+    <property name="name" not-null="true" >
+      <column name="PAGE_TYPE_NAME" length="50" />
+    </property>
+    <property name="description">
+      <column name="PAGE_TYPE_DESC" length="200" />
+    </property>
+    <property name="order" column="PAGE_TYPE_ORDER" />
+  </class>
+  <class name="UmsPage" table="T_UMS_PAGE" batch-size="10">
+    <id name="id" type="long" unsaved-value="0">
+      <column name="PAGE_ID" not-null="true"/>
+      <generator class="increment"/>
+    </id>
+    <timestamp name="lastUpdDate" column="LAST_UPD_DATE" />
+    <property name="code" not-null="true" >
+      <column name="PAGE_CODE" length="10" />
+    </property>
+    <property name="name" not-null="true" >
+      <column name="PAGE_NAME" length="200" />
+    </property>
+    <property name="description">
+      <column name="PAGE_DESC" length="200" />
+    </property>
+    <property name="path" not-null="true">
+      <column name="PAGE_PATH" length="200" />
+    </property>
+    <many-to-one name="module" class="UmsModule" column="MODULE_ID" />
+    <many-to-one name="pageType" class="UmsPageType" column="PAGE_TYPE_ID" />
+    <property name="order" column="PAGE_ORDER" />
+    <property name="isActive" not-null="true">
+      <column name="IS_ACTIVE" length="1" />
+    </property>
+    <property name="isMenu" not-null="true">
+      <column name="IS_MENU" length="1" />
+    </property>
+  </class>
+  <class name="UmsRole" table="T_UMS_ROLE" batch-size="10">
+    <id name="id" type="long" unsaved-value="0">
+      <column name="ROLE_ID" not-null="true"/>
+      <generator class="increment"/>
+    </id>
+    <timestamp name="lastUpdDate" column="LAST_UPD_DATE" />
+    <property name="name" >
+      <column name="ROLE_NAME" length="50" />
+    </property>
+    <property name="description">
+      <column name="ROLE_DESC" length="200" />
+    </property>
+    <list name="privilegeList" cascade="all-delete-orphan" table="T_UMS_ROLE_PRIVILEGE">
+    	<key column="ROLE_ID" />
+    	<index column="PRIV_INDEX" />
+    	<one-to-many class="UmsRolePrivilege"/>
+    </list>
+    <property name="isActive" not-null="true" column="IS_ACTIVE" length="1" />
+    <property name="isAuto" not-null="true" column="IS_AUTO" length="1" />
+    <property name="code" >
+      <column name="ROLE_CODE" length="10" unique="true" />
+    </property>
+  </class>
+  <class name="UmsRolePrivilege" table="T_UMS_ROLE_PRIVILEGE" batch-size="10">
+    <id name="id" type="long" unsaved-value="0">
+      <column name="PRIV_ID" not-null="true"/>
+      <generator class="increment"/>
+    </id>
+    <many-to-one name="page" class="UmsPage" column="PAGE_ID" />
+    <property name="right" column="PRIV_RIGHT" />
+    <many-to-one name="role" class="UmsRole" column="ROLE_ID" />
+  </class>
+  <class name="UmsPerson">
+  	<subselect>SELECT person.emp_login PSN_ID, person.th_firstname FIRST_NAME, person.th_lastname LAST_NAME,
+       (select POS_NAME.TH_POSITION_NAME from t_pis_position
+      pos_name where POS_NAME.POSITION_ID=person.POSITION_ID) POSITION,
+     PERSON.EMP_TYPE PSN_TYPE, person.dep_id NODE_ID 
+      FROM T_PIS_PERSON person</subselect>
+  	<synchronize table="T_PIS_PERSON"/>
+  	<synchronize table="T_PPS_GOV_PERSONAL_FRAME"/>
+  	<synchronize table="TM_DPS_GOF_POS_NAME"/>
+  	<id name="psnId" column="psn_id" length="13" />
+  	<property name="firstName" column="FIRST_NAME" />
+  	<property name="lastName" column="LAST_NAME" />
+  	<property name="position" column="POSITION" />
+  	<property name="psnType" column="PSN_TYPE" />
+  	<many-to-one name="node" column="NODE_ID" class="UmsNode" />
+  </class>
+  <class name="UmsNode">
+  	<subselect>SELECT dep.DEP_ID NODE_ID, dep.TH_DEP_NAME NODE_SHORT_NAME,dep.TH_DEP_NAME NODE_FULL_NAME,
+  	 null PARENT_NODE_ID FROM T_PIS_DEPARTMENT dep</subselect>
+  	<synchronize table="T_PPS_ORG"/>
+  	<id name="id" column="node_id" />
+  	<property name="fullName" column="NODE_FULL_NAME" />
+  	<property name="shortName" column="NODE_SHORT_NAME" />
+  	<many-to-one name="parentNode" column="PARENT_NODE_ID" class="UmsNode" />
+  </class>
+  <class name="UmsUser" table="T_UMS_USER" batch-size="10">
+    <id name="id" type="long" unsaved-value="0">
+      <column name="USER_ID" not-null="true"/>
+      <generator class="increment"/>
+    </id>
+    <timestamp name="lastUpdDate" column="LAST_UPD_DATE" />
+    <property name="login">
+      <column name="USER_LOGIN" length="20" unique="true" />
+    </property>
+    <property name="password">
+      <column name="USER_PASSWORD" length="100" />
+    </property>
+    <property name="isActive">
+      <column name="IS_ACTIVE" length="1" />
+    </property>
+    <list name="userRoleList" cascade="all-delete-orphan" table="T_UMS_USER_ROLE">
+    	<key column="USER_ID" />
+    	<index column="ROLE_INDEX" />
+    	<one-to-many class="UmsUserRole"/>
+    </list>
+    <property name="loginFailedCount" column="LOGIN_FAILED_COUNT" />
+    <property name="lastLoginSuccess" column="LAST_LOGIN_SUCCESS" />
+    <property name="lastLoginFailed" column="LAST_LOGIN_FAILED" />
+    <property name="lastChangePassword" column="LAST_CHANGE_PASSSWORD" />
+    <property name="personTypeRight" column="PERSON_TYPE_RIGHT" />
+    <property name="fromDate" column="FROM_DATE" />
+    <property name="toDate" column="TO_DATE" />
+    <property name="remark" column="USER_REMARK" length="200" />
+    <property name="email" column="USER_EMAIL" length="100" />
+    <property name="telNo" column="USER_TEL_NO" length="100" />
+
+    <many-to-one name="person" column="PSN_ID" unique="true" class="UmsPerson" />
+  </class>
+  <class name="UmsUserRole" table="T_UMS_USER_ROLE" batch-size="10">
+    <id name="id" type="long" unsaved-value="0">
+      <column name="USER_ROLE_ID" not-null="true"/>
+      <generator class="increment"/>
+    </id>
+    <many-to-one name="role" class="UmsRole" column="ROLE_ID" />
+    <many-to-one name="user" class="UmsUser" column="USER_ID" />
+  </class>
+
+  <class name="UserUsageLog" table="T_UMS_USER_USAGE" batch-size="10">
+    <id name="id" type="long" unsaved-value="0">
+      <column name="USAGE_ID" not-null="true"/>
+      <generator class="increment"/>
+    </id>
+    <timestamp name="lastUpdDate" column="LAST_UPD_DATE" />
+    <property name="login" column="USER_LOGIN" length="20" />
+    <property name="ipAddress" column="IP_ADDR" length="20" />
+    <property name="pageCode" column="ACTION_PATH" length="20" />
+    <property name="cmd" column="ACTION_CMD" length="20" />
+    <property name="key" column="ACTION_KEY" length="100" />
+  </class>
+
+</hibernate-mapping>

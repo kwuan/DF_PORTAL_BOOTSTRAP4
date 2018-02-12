@@ -1,0 +1,156 @@
+.css0 {
+  FONT-FAMILY: Tahoma;
+  font-size: 10pt;
+  color: #000000;
+  TEXT-DECORATION: none
+}
+.css1 {
+  FONT-FAMILY: Tahoma;
+  font-size: 11pt;
+  color: #000000;
+  TEXT-DECORATION: none
+}
+.css2 {
+  FONT-FAMILY: Tahoma;
+  font-size: 12pt;
+  color: #FF0000;
+  TEXT-DECORATION: none
+}
+.textsize{
+	FONT-FAMILY: "Tahoma";
+	COLOR: #000000;
+	FONT-SIZE: 10pt;
+	vertical-align:middle;
+}
+
+input{
+	FONT-FAMILY: "Tahoma";
+	COLOR: #000000;
+	FONT-SIZE: 12pt;
+}
+select{
+	FONT-FAMILY: "Tahoma";
+	COLOR: #000000;
+	FONT-SIZE: 12pt;
+}
+textarea{
+	FONT-FAMILY: "Tahoma";
+	COLOR: #000000;
+	FONT-SIZE: 12pt;
+}
+
+.info {
+  FONT-FAMILY: Tahoma;
+  font-size: 12pt;
+  font-weight: normal;
+  color: #0000FF
+}
+.error {
+  FONT-FAMILY: Tahoma;
+  font-size: 12pt;
+  font-weight: normal;
+  color: #FF0000
+}
+.tr0 td {
+  FONT-FAMILY: Tahoma;
+  font-size: 12pt;
+  color: #000000;
+  BACKGROUND-COLOR: #f2f2f2
+}
+.tr0 a:visited {
+	COLOR: #000000;
+	TEXT-DECORATION: none
+}
+.tr0 a:link {
+	COLOR: #000000;
+	TEXT-DECORATION: none
+}
+.tr0 a:hover {
+	COLOR: #000000;
+	TEXT-DECORATION: underline
+}
+.tr1 td {
+  FONT-FAMILY: Tahoma;
+  font-size: 12pt;
+  color: #000000;
+}
+.tr1 a:visited {
+	COLOR: #000000;
+	TEXT-DECORATION: none
+}
+.tr1 a:link {
+	COLOR: #000000;
+	TEXT-DECORATION: none
+}
+.tr1 a:hover {
+	COLOR: #000000;
+	TEXT-DECORATION: underline
+}
+
+.trform td {
+  FONT-FAMILY: Tahoma;
+  font-size: 12pt;
+  color: #000000;
+  BACKGROUND-COLOR: #ffffff
+}
+.trform a:visited {
+	COLOR: #000000;
+	TEXT-DECORATION: none
+}
+.trform a:link {
+	COLOR: #000000;
+	TEXT-DECORATION: none
+}
+.trform a:hover {
+	COLOR: #000000;
+	TEXT-DECORATION: underline
+}
+
+TH {
+  FONT-FAMILY: Tahoma;
+  font-size: 12pt;
+  font-weight: bold;
+  text-align: left;
+  color: #000000;
+  white-space:nowrap;
+  background-image:url(../images/bg_suppage.gif); background-repeat:repeat-x;
+}
+TH a:visited {
+	COLOR: #000000;
+	TEXT-DECORATION: none
+}
+TH a:link {
+	COLOR: #000000;
+	TEXT-DECORATION: none
+}
+TH a:hover {
+	COLOR: #000000;
+	TEXT-DECORATION: underline
+}
+
+.trlabel td {
+  FONT-FAMILY: Tahoma;
+  font-size: 12pt;
+  font-weight: bold;
+  color: #000000
+}
+.trlabel a:visited {
+	COLOR: #000000;
+	TEXT-DECORATION: none
+}
+.trlabel a:link {
+	COLOR: #000000;
+	TEXT-DECORATION: none
+}
+.trlabel a:hover {
+	COLOR: #000000;
+	TEXT-DECORATION: underline
+}
+
+
+.trcursor td {
+  FONT-FAMILY: Tahoma;
+  font-size: 12pt;
+  font-weight: bold;
+  color: #001A75
+}

@@ -1,0 +1,156 @@
+@charset "windows-874";
+/* CSS Document */
+.trcursor td {
+  FONT-FAMILY: Tahoma;
+  font-size: 10pt;
+  font-weight: bold;
+  color: #001A75
+}
+.error {
+  FONT-FAMILY: Tahoma;
+  font-size: 10pt;
+  font-weight: normal;
+  color: #FF0000
+}
+
+.content table { width:100%; border:0; border-collapse:collapse; border-spacing:0; padding:0; margin-bottom:2px;}
+.content table td { padding:6px 4px;}
+.content table.form{
+	 border: 1px solid #E2E2E2 !important;
+   	 border-collapse: collapse;
+	 background:#FFF;
+	 margin-bottom:10px;
+}
+.content table.form th{ background:url(../images/th_form.png) repeat-x; height:30; line-height:30px; text-align:left; color:#FFF; padding:0px 10px;}
+
+.content table.list-table{ text-align:center; background:#FFF; margin-bottom:5px;}
+.content table.list-table th{ background:url(../images/th_list.png) repeat-x; height:30px; line-height:30px; color:#FFF;}
+.content table.list-table th a:visited{ color:#FFF;}
+.content table.list-table th a:link{ color:#FFF;}
+.content table.list-table, .content table.list-table td, .content table.list-table th{ 
+	border: 1px solid #e2e2e2 !important;
+    border-collapse: collapse;
+}
+.content table.list-table tr:hover, .content table.list-table tr.even:hover{
+	background:#BEDBEB;	
+}
+.content table.list-table tr.even{ background:#EBEBEB;}
+
+select {
+	padding:0.308em;
+}
+input, textarea {
+	padding:0.308em;
+}
+input[type="text"], input[type="password"], textarea, select  {
+	/*background: none repeat scroll 0 0 #EEEEEE; */
+	border-color: #AAAAAA #DDDDDD #DDDDDD #AAAAAA;
+	border-style: solid;
+	border-width: 1px;
+	color: #000; /*#444444*/
+	font-size: 1em;
+}
+input[type="text"]:hover, input[type="text"]:focus, input[type="password"]:hover, input[type="password"]:focus, textarea:focus, textarea:hover, select:focus, select:hover {
+	background:#FAFBFC;
+	border:1px solid #ba0000;
+}
+/*
+.btn-search,  .btn-save, .btn-cancel, .btn-back, .btn, .btn-preview  { background:url(../images/btn_search.png) no-repeat; width:116px; height:31px; border:none; margin-right:5px; cursor:pointer;}
+.btn-add{ background:url(../images/btn_add.png) no-repeat; color:#FFF;}
+.btn-save { background:url(../images/btn_save.png) no-repeat; }
+.btn-cancel { background:url(../images/btn_cancel.png) no-repeat;}
+.btn-back { background:url(../images/btn_back.png) no-repeat;}
+.btn-preview { background:url(../images/btn_preview.png) no-repeat; color:#fff;}
+.btn {  background:url(../images/btn_blank.png) no-repeat; }*/
+
+.btn-search {
+	height: 31px;
+	cursor: pointer;
+	padding: 3px 30px 3px 7px;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	-webkit-border-radius: .5em; /* safari border-radius*/
+	-moz-border-radius: .5em; /*firefox and chrome border-radius*/
+	border-radius: .5em; /* IE9 border-radius*/
+	background: url(../images/btn_search2.png) #efefef right no-repeat;
+    border: 1px solid #a5a5a5;
+    color: #004b77;
+}
+
+.btn-add {
+	height: 31px;
+	cursor: pointer;
+	padding: 3px 30px 3px 7px;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	-webkit-border-radius: .5em; /* safari border-radius*/
+	-moz-border-radius: .5em; /*firefox and chrome border-radius*/
+	border-radius: .5em; /* IE9 border-radius*/
+	background: url(../images/btn_add2.png) #004c78 right no-repeat;
+    border: 1px solid #0076A3;
+    color: #fff;
+}
+
+.btn-save {
+	height: 31px;
+	cursor: pointer;
+	padding: 3px 30px 3px 7px;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	-webkit-border-radius: .5em; /* safari border-radius*/
+	-moz-border-radius: .5em; /*firefox and chrome border-radius*/
+	border-radius: .5em; /* IE9 border-radius*/
+	background: url(../images/btn_save2.png) #efefef right no-repeat;
+    border: 1px solid #a5a5a5;
+    color: #004b77;
+}
+.btn-cancel {
+	height: 31px;
+	cursor: pointer;
+	padding: 3px 30px 3px 7px;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	-webkit-border-radius: .5em; /* safari border-radius*/
+	-moz-border-radius: .5em; /*firefox and chrome border-radius*/
+	border-radius: .5em; /* IE9 border-radius*/
+	background: url(../images/btn_cancel2.png) #efefef right no-repeat;
+    border: 1px solid #a5a5a5;
+    color: #004b77;
+}
+.btn-back {
+	height: 31px;
+	cursor: pointer;
+	padding: 3px 30px 3px 7px;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	-webkit-border-radius: .5em; /* safari border-radius*/
+	-moz-border-radius: .5em; /*firefox and chrome border-radius*/
+	border-radius: .5em; /* IE9 border-radius*/
+	background: url(../images/btn_back2.png) #efefef right no-repeat;
+    border: 1px solid #a5a5a5;
+    color: #004b77;
+}
+.btn-preview {
+	height: 31px;
+	cursor: pointer;
+	padding: 3px 30px 3px 7px;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	-webkit-border-radius: .5em; /* safari border-radius*/
+	-moz-border-radius: .5em; /*firefox and chrome border-radius*/
+	border-radius: .5em; /* IE9 border-radius*/
+	background: url(../images/btn_preview2.png) #3d3d3d right no-repeat;
+    border: 1px solid #666;
+    color: #fff;
+}
+.btn {
+	height: 31px;
+	cursor: pointer;
+	padding: 3px 30px 3px 7px;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	-webkit-border-radius: .5em; /* safari border-radius*/
+	-moz-border-radius: .5em; /*firefox and chrome border-radius*/
+	border-radius: .5em; /* IE9 border-radius*/
+	background:#efefef right no-repeat;
+    border: 1px solid #a5a5a5;
+    color: #004b77;
+}
+
+#wrapper-container table td a{
+	text-decoration:none;
+}
+

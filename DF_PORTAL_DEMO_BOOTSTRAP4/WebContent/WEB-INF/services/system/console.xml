@@ -1,0 +1,24 @@
+<?xml version='1.0'?>
+
+<!--
+  This web service provides backend support for the real-time management console
+-->
+
+<service>
+  <!--factory to use for construction-->
+  <constructor>
+    <class>electric.console.services.ConsoleFacade</class>
+  </constructor>
+
+  <!--list of interfaces to publish-->
+  <interface>electric.console.services.IConsoleFacade</interface>
+
+  <!--publish?-->
+  <publish>yes</publish>
+
+  <!--description-->
+  <description>console service</description>
+
+  <!--list of security guards-->
+  <!--<role>administrator</role>-->
+</service>
